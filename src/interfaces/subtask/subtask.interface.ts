@@ -7,6 +7,11 @@ export interface Subtask {
     updated_at: Date
 }
 
+export interface SubstaskForm {
+    name: string
+    validate: boolean
+}
+
 export interface SubtaskErrors {
     [key: string]: string[];
   }

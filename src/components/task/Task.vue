@@ -4,10 +4,10 @@ import { useRoute } from "vue-router";
 import useComment from "../../composable/comment/comment";
 import useSubTask from "../../composable/subtask/subtask";
 import useTask from "../../composable/task/task";
-//import useStatus from "../../composable/status";
+import useStatus from "../../composable/status/status";
 
 const { getTask, task } = useTask();
-//const { getAllStatus, listStatus } = useStatus();
+const { getAllStatus, listStatus } = useStatus();
 
 const {
   getAllSubtask,
@@ -34,10 +34,10 @@ const testToto = () => {
 };
 
 onMounted(async () => {
-  getTask(route.params.id, route.params.taskid);
+  getTask(Number(route.params.id), Number(route.params.taskid));
   getAllSubtask(route.params.id, route.params.taskid);
  getAllComment(route.params.taskid);
- //getAllStatus();
+ getAllStatus();
 });
 </script>
 
@@ -74,7 +74,7 @@ onMounted(async () => {
                       />
                     </svg>
                   </button>
-
+{{ task }}
                   <div class="font-medium text-slate-800 peer-checked:line-through ml-2">
                     {{ task.title }}
                   </div>

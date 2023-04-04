@@ -1,6 +1,6 @@
 import { ref, reactive } from "vue";
 import { useRouter } from "vue-router";
-import { Subtask, SubtaskErrors } from "../../interfaces/subtask/subtask.interface"; 
+import { Subtask, SubtaskErrors,SubstaskForm } from "../../interfaces/subtask/subtask.interface"; 
 
 export default function useSubTask() {
     const listSubtask = ref([]);
@@ -8,9 +8,9 @@ export default function useSubTask() {
     const subTask = ref<Subtask[]>([]);
     const validationErrors = ref<SubtaskErrors>({});
 
-    const subTaskForm = reactive({
+    const subTaskForm = reactive<SubstaskForm>({
         name: "",
-        validate: "",
+        validate: false,
     });
 
     const getAllSubtask = (id: number,idTask: number) => {

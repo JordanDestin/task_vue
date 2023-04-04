@@ -20,11 +20,8 @@ const { getAllStatus, listStatus } = useStatus();
 
 const route = useRoute();
 
-let paramsId = parseInt(route.params.id)
-
- console.log(typeof paramsId)
 onMounted(() => {
-  getAllTasks(paramsId);
+  getAllTasks(Number(route.params.id));
   getAllStatus();
 });
 </script>
@@ -55,22 +52,22 @@ onMounted(() => {
       </div> -->
 
       <TaskToDo
-        @delete-task="(idTask) => deleteTask(route.params.id, idTask)"
+        @delete-task="(idTask) => deleteTask(Number(route.params.id), idTask)"
         :listTask="listTask"
         v-if="listTask.length != 0"
       />
       <TaskInProgress
-        @delete-task="(idTask) => deleteTask(route.params.id, idTask)"
+        @delete-task="(idTask) => deleteTask(Number(route.params.id), idTask)"
         :taskInProgress="taskInProgress"
         v-if="taskInProgress.length != 0"
       />
       <TaskInWaiting
-        @delete-task="(idTask) => deleteTask(route.params.id, idTask)"
+        @delete-task="(idTask) => deleteTask(Number(route.params.id), idTask)"
         :taskWaiting="taskWaiting"
         v-if="taskWaiting.length != 0"
       />
       <TaskResolved
-        @delete-task="(idTask) => deleteTask(route.params.id, idTask)"
+        @delete-task="(idTask) => deleteTask(Number(route.params.id), idTask)"
         :taskInResolved="taskInResolved"
         v-if="taskInResolved.length != 0"
       />

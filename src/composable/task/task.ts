@@ -41,7 +41,7 @@ export default function useTask() {
             .get("theme/" + idTheme + "/task/" + idTask)
             .then((res) => {
                 task.value = res.data.task;
-                console.log(res.data.task, "qsdqsd");
+                console.log(typeof res.data.task, "taskkkkkkk");
             })
             .catch((err) => console.log(err));
     };
