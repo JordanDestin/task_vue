@@ -1,10 +1,10 @@
-import {  reactive } from "vue"
+import {  reactive, ref } from "vue"
 import  useAuth  from "./auth"
 import { LoginErrors, LoginForm } from "../../interfaces/auth/login.interface.js";
 
 export default function useLogin() {
     const auth = useAuth()
-    const errors = reactive<LoginErrors>({});
+    const errors = ref<LoginErrors>({});
     const loginForm  = reactive<LoginForm>({
         email : "" ,
         password : "",
@@ -12,6 +12,7 @@ export default function useLogin() {
     })
 
     const handleSubmit = async () =>{
+        errors.value ={}
         return window.axios.post("auth/login",loginForm)
             .then((response)=>{
                 auth.login(response.data.access_token)
@@ -27,6 +28,7 @@ export default function useLogin() {
     }
     return{
         handleSubmit,
-        loginForm
+        loginForm,
+        errors
     }
 }

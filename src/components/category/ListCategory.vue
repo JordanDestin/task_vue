@@ -34,7 +34,7 @@ onMounted(() => {
           ></div>
         </div>
 
-        <!-- <div class="space-y-6">
+        <div class="space-y-6">
           <form @submit.prevent="createCategory(route.params.id)">
             <h3 class="text-lg font-bold">Créer une catégorie</h3>
             <input
@@ -44,12 +44,12 @@ onMounted(() => {
               v-model="nameCategory.name"
             />
             <button type="submit" class="btn btn-active btn-primary ml-3">Ajouter</button>
-            <button
+            <!-- <button
                   type="submit"
                   class="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                 >
                   Ajouter
-                </button>
+                </button> -->
           </form>
 
           <div v-for="item in listCategory" :value="item.id">
@@ -69,11 +69,6 @@ onMounted(() => {
                   </div>
 
                   <div class="flex items-center justify-end space-x-3">
-                    <button
-                      type="button"
-                      class="inline-flex justify-center rounded-md border border-transparent bg-black px-4 py-2 text-sm font-medium text-white hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                    ></button>
-
                     <button type="button" @click="deleteCategory(route.params.id,item.id)">
                       <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32">
                         <path d="M13 15h2v6h-2zM17 15h2v6h-2z" />
@@ -87,7 +82,7 @@ onMounted(() => {
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
   </main>

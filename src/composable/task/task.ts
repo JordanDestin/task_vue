@@ -14,6 +14,7 @@ export default function useTask() {
     const router = useRouter();
     const task = ref<Task[]>([]);
     const validationErrors = ref<TaskErrors>({});
+    
     const taskForm = reactive<TaskForm>({
         title: "",
         detail: "",
@@ -22,7 +23,6 @@ export default function useTask() {
     });
 
     const getAllTasks = (id: number) => {
-        console.log(id, "qsdqs");
         return window.axios
             .get("theme/" + id + "/task")
             .then((res) => {
@@ -41,7 +41,6 @@ export default function useTask() {
             .get("theme/" + idTheme + "/task/" + idTask)
             .then((res) => {
                 task.value = res.data.task;
-                console.log(typeof res.data.task, "taskkkkkkk");
             })
             .catch((err) => console.log(err));
     };
@@ -57,19 +56,17 @@ export default function useTask() {
             .catch((err) => console.log(err));
     };
 
-    // const updateStatus = (idTheme: number, idTask: number) => {
-    //     return window.axios
-    //         .put("theme/" + idTheme + "/update-status-task/" + idTask, {idStatus:task.value.statutes_id})
-    //         .then((res) => {
-    //             getTask(idTheme, idTask);
-    //             $toast.success('Status modifier');  
-    //         })
-    //         .catch((err) => console.log(err));
-    // };
+    const updateStatus = (idTheme: number, idTask: number, idStatutes:number) => {
+        return window.axios 
+            .put("theme/" + idTheme + "/update-status-task/" + idTask, {idStatus:idStatutes})
+            .then((res) => {
+                getTask(idTheme, idTask);
+                $toast.success('Status modifier');  
+            })
+            .catch((err) => console.log(err));
+    };
 
     const deleteTask = (idTheme: number, idTask: number) => {
-        console.log(idTheme, "idtheme");
-        console.log(task, "idtask");
         return window.axios
             .delete("theme/" + idTheme + "/task/" + idTask)
             .then((res) => {
@@ -87,7 +84,7 @@ export default function useTask() {
         createTask,
         taskForm,
         validationErrors,
-      //  updateStatus,
+        updateStatus,
         taskInProgress,
         taskWaiting,
         taskInResolved

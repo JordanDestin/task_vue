@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import useLogin from "../../composable/auth/login"
 
-const {loginForm, handleSubmit } = useLogin()
+const {loginForm, handleSubmit, errors } = useLogin()
 </script> 
 
 <template>
@@ -28,11 +28,11 @@ const {loginForm, handleSubmit } = useLogin()
                 v-model="loginForm.email"
               />
             </div>
-            <!-- <div class="text-red-600 mt-1">
-              <div v-for="message in validationErrors?.email">
+            <div class="text-red-600 mt-1">
+              <div v-for="message in errors?.email">
                 {{ message }}
               </div>
-            </div> -->
+            </div>
             <div class="form-control">
               <label class="label">
                 <span class="label-text">Password</span>

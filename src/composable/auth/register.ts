@@ -1,10 +1,10 @@
-import { reactive } from "vue";
+import { reactive,ref } from "vue";
 import  useAuth  from "./auth.js"
 import { RegisterErrors, RegisterForm } from "../../interfaces/auth/register.interface.js";
 
 export default function useRegister() {
     const auth = useAuth()
-    const errors = reactive<RegisterErrors>({});
+    const errors = ref<RegisterErrors>({});
     const registerForm = reactive<RegisterForm>({
         name:"",
         email : "" ,
@@ -13,6 +13,7 @@ export default function useRegister() {
     });
 
     const handleSubmit = async () => {
+        errors.value ={}
         return window.axios.post("auth/register",registerForm)
             .then((response)=>{
                 auth.login(response.data.access_token)
@@ -29,6 +30,7 @@ export default function useRegister() {
 
     return{
         registerForm,
-        handleSubmit
+        handleSubmit,
+        errors
     }
 }

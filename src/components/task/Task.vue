@@ -6,7 +6,7 @@ import useSubTask from "../../composable/subtask/subtask";
 import useTask from "../../composable/task/task";
 import useStatus from "../../composable/status/status";
 
-const { getTask, task } = useTask();
+const { getTask, task,updateStatus } = useTask();
 const { getAllStatus, listStatus } = useStatus();
 
 const {
@@ -74,7 +74,6 @@ onMounted(async () => {
                       />
                     </svg>
                   </button>
-{{ task }}
                   <div class="font-medium text-slate-800 peer-checked:line-through ml-2">
                     {{ task.title }}
                   </div>
@@ -232,8 +231,8 @@ onMounted(async () => {
                 <div class="shrink-0 -space-x-3 -ml-p ml-3 mb-5">
                   <select
                     class="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold"
-                    v-model="task.status_id"
-                    @change="updateStatus(route.params.id, task.id)"
+                    v-model="task.statutes_id"
+                    @change="updateStatus(route.params.id, task.id, task.statutes_id)"
                   >
                     <option v-for="item in listStatus" :value="item.id">
                       {{ item.name }}
