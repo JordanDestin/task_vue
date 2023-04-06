@@ -24,7 +24,7 @@ export default function useComment() {
     const createComment = (idTask: number) => {
         console.log(commentForm, "mes commentaires");
         return window.axios
-            .post("/api/task/" + idTask + "/comment",commentForm)
+            .post("task/" + idTask + "/comment",commentForm)
             .then((res) => {
                 commentForm.comment="";
                 getAllComment(idTask);
@@ -35,7 +35,7 @@ export default function useComment() {
 
     const deleteComment = (idTask: number, idComment: number) => {
         return window.axios
-            .delete("/api/task/" + idTask + "/comment/" + idComment)
+            .delete("task/" + idTask + "/comment/" + idComment)
             .then((res) => {
                 getAllComment(idTask);
             })

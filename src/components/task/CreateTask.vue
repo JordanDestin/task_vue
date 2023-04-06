@@ -8,7 +8,7 @@ const route = useRoute();
 const { taskForm, createTask, validationErrors } = useTask();
 const { getAllCategory, listCategory } = useCategory();
 
-let paramId = route.params.id;
+let paramId = Number(route.params.id);
 
 onMounted(async () => {
   await getAllCategory(route.params.id);
@@ -18,7 +18,7 @@ onMounted(async () => {
 <template>
   <div class="card w-full bg-base-100">
     <h1 class="text-3xl text-slate-800 font-bold">Créer une tâche</h1>
-    <form @submit.prevent="createTask(route.params.id)">
+    <form @submit.prevent="createTask(paramId)">
       <div class="card-body">
         <div class="form-control">
           <label class="label">

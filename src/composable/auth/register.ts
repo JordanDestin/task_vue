@@ -12,7 +12,7 @@ export default function useRegister() {
         password_confirmation : "",
     });
 
-    const handleSubmit = async () => {
+    const handleSubmit = () => {
         errors.value ={}
         return window.axios.post("auth/register",registerForm)
             .then((response)=>{

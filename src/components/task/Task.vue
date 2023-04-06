@@ -46,6 +46,7 @@ onMounted(async () => {
     <!-- Smaller container -->
     <div class="max-w-3xl mx-auto">
       <!-- Task -->
+      {{ task }}
       <div class="max-w-3xl mx-auto">
         <div class="container mx-auto">
           <div
@@ -91,14 +92,6 @@ onMounted(async () => {
                       <!-- Message input -->
                       <form class="grow flex">
                         <div class="grow mr-3">
-                          <input
-                            id="name"
-                            name="name"
-                            class="form-input w-full bg-slate-100 border-transparent focus:bg-white focus:border-slate-300"
-                            type="text"
-                            placeholder="Sous tâche"
-                            v-model="subTaskForm.name"
-                          />
                           <input
                             type="text"
                             placeholder="Sous tâche"

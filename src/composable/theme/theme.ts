@@ -16,13 +16,11 @@ export default function useTheme() {
             .get("theme")
             .then((response)=>{
                 listThemes.value = response.data.listThemes;
-                console.log(response, "qsdqsd");
             })
             .catch((err) => console.log(err));
     };
 
     const createTheme = (): Promise<void>  => {
-        console.log('toto')
         return window.axios
             .post("/theme", nameTheme)
             .then((res) => {

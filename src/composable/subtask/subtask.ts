@@ -25,6 +25,8 @@ export default function useSubTask() {
     };
 
     const createSubTask = (id: number,idTask: number) => {
+
+        console.log(subTaskForm,"suqsdqsd")
         return window.axios
             .post("theme/" + id+ "/task/" + idTask + "/subtask", subTaskForm)
             .then((res) => {

@@ -46,14 +46,18 @@ export default function useTask() {
     };
 
     const createTask = (idTheme: number) => {
-        console.log(taskForm, "mes taches");
+        validationErrors.value={}
         return window.axios
             .post("theme/" + idTheme + "/task",taskForm)
             .then((res) => {
                 router.push({ path: "listTask" });
                 $toast.success('Tâche créer');                
             })
-            .catch((err) => console.log(err));
+            .catch((error) => {
+                if (error.response.status === 422) {
+                    validationErrors.value = error.response.data.errors;
+                }
+              })
     };
 
     const updateStatus = (idTheme: number, idTask: number, idStatutes:number) => {
